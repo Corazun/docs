@@ -149,7 +149,13 @@ server {
             rewrite ^/.*$ /admin-dev/index.php last;
         }
     }
-
+    
+    # Front office rewrite part
+    location / {
+        if (!-e $request_filename) {
+            rewrite ^/.*$ /index.php last;
+        }
+    }
 
     # File security
     # .htaccess .DS_Store .htpasswd etc
